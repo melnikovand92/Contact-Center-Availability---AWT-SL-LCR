@@ -1,0 +1,15 @@
+Отвеченные звонки :=
+CALCULATE (
+    DISTINCTCOUNT ( Enter_Answer[connid] ),
+    Enter_Answer[enter] = 1,
+    Enter_Answer[answer] = 1
+)
+
+Распределённые звонки :=
+CALCULATE (
+    DISTINCTCOUNT ( Enter_Answer[connid] ),
+    Enter_Answer[enter] = 1
+)
+
+Потерянные звонки :=
+[Распределённые звонки] - [Отвеченные звонки]
