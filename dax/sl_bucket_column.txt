@@ -1,0 +1,6 @@
+SL бакет (≤60?) =
+VAR ans = Enter_Answer[answer]
+VAR ent = Enter_Answer[enter]
+VAR awt = RELATED ( stg_AWT[awt] )
+RETURN
+IF ( ent = 1 && ans = 1 && awt <= 60, "≤ 60 сек", "> 60 сек" )
