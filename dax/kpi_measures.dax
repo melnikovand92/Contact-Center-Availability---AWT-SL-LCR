@@ -1,0 +1,32 @@
+-- AWT
+AWT (сек) :=
+AVERAGEX (
+    FILTER ( Enter_Answer, Enter_Answer[enter] = 1 && Enter_Answer[answer] = 1 ),
+    RELATED ( stg_AWT[awt] )
+)
+
+AWT: дельта до цели (сек) = [AWT (сек)] - [Цель AWT (сек)]
+
+-- SL
+SL (≤60, шт) :=
+COUNTROWS (
+    FILTER (
+        Enter_Answer,
+        Enter_Answer[enter] = 1 &&
+        Enter_Answer[answer] = 1 &&
+        RELATED ( stg_AWT[awt] ) <= 60
+    )
+)
+
+SL % =
+DIVIDE ( [SL (≤60, шт)], [Отвеченные звонки], BLANK() )
+
+SL: дельта до цели (п.п.) =
+[SL %] - [Цель SL (%)]
+
+-- LCR
+LCR % =
+DIVIDE ( [Потерянные звонки], [Распределённые звонки], BLANK() )
+
+LCR: дельта до цели (п.п.) =
+[LCR %] - [Цель LCR (%)]
