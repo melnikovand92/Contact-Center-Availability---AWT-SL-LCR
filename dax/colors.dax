@@ -1,0 +1,26 @@
+AWT цвет =
+VAR v = [AWT (сек)]
+RETURN
+    IF(
+        ISBLANK(v), BLANK(),
+        IF( v <= 60,  "#00875A",         -- зелёный
+            IF( v <= 75, "#FFAB00",     -- жёлтый
+                       "#DE350B" ) ) )  -- красный
+
+SL цвет =
+VAR v = [SL %]
+RETURN
+    IF(
+        ISBLANK(v), BLANK(),
+        IF( v >= 0.80, "#00875A",       -- зелёный
+            IF( v >= 0.70, "#FFAB00",   -- жёлтый
+                       "#DE350B" ) ) )  -- красный
+
+LCR цвет =
+VAR v = [LCR %]
+RETURN
+    IF(
+        ISBLANK(v), BLANK(),
+        IF( v <= 0.06, "#00875A",       -- зелёный
+            IF( v <= 0.10, "#FFAB00",   -- жёлтый
+                       "#DE350B" ) ) )  -- красный
