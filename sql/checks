@@ -1,0 +1,21 @@
+-- 1) AWT (Average Waiting Time)
+SELECT 
+    AVG(TIMESTAMPDIFF(SECOND, enter, answer)) AS AWT
+FROM 
+    Enter_Answer
+WHERE 
+    answer IS NOT NULL;
+
+-- 2) SL (Service Level)
+SELECT 
+    (COUNT(CASE WHEN TIMESTAMPDIFF(SECOND, enter, answer) <= 60 THEN 1 END) / COUNT(*)) * 100 AS SL
+FROM 
+    Enter_Answer
+WHERE 
+    answer IS NOT NULL;
+
+-- 3) LCR (Lost Call Rate)
+SELECT 
+    (COUNT(CASE WHEN answer IS NULL THEN 1 END) / COUNT(*)) * 100 AS LCR
+FROM 
+    Enter_Answer;
