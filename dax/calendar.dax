@@ -1,0 +1,7 @@
+Календарь = 
+VAR d1 = SELECTCOLUMNS ( Enter_Answer, "d", Enter_Answer[date] )
+VAR d2 = SELECTCOLUMNS ( AWT_AHT,      "d", AWT_AHT[date] )
+VAR AllDates = FILTER ( UNION ( d1, d2 ), NOT ISBLANK ( [d] ) )
+VAR MinD = MINX ( AllDates, [d] )
+VAR MaxD = MAXX ( AllDates, [d] )
+RETURN CALENDAR ( MinD, MaxD )
